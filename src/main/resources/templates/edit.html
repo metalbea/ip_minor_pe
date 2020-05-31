@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:text="#{navigation}"></p>
+<a href="?lang=nl">nl</a> <a href="?lang=en">en</a>
+<br>
+<a th:text="#{taskoverview}" href="/tasks"></a>
+<a th:text="#{createtask}" href="/tasks/new"></a>
+<a th:text="#{back}" th:href="'/tasks/'+${curtask.id}"></a>
+<br>
+<br>
+<h1 th:text="#{edittask}"></h1>
+<form method="post" th:action="'/tasks/edit/'+${curtask.id}">
+
+    <label for="title" th:text="#{titleform}"> </label>
+    <!--<input type="hidden" name="id" th:value="${curtask.id}">-->
+    <input type="text" name="title" id="title" th:value="${curtask.title}"><br>
+    <label for="description" th:text="#{descriptionform}"></label>
+    <input type="text" name="description" id="description" th:value="${curtask.description}"><br>
+    <label for="dueDate" th:text="#{duedateform}"> </label>
+    <input type="datetime-local" name="dueDate" id="dueDate" th:value="${{curtask.dueDate}}"><br>
+    <input type="submit" th:value="#{submitform}">
+</form>
+</body>
+</html>
